@@ -7,16 +7,12 @@ export interface ToggleFilterProps {
 }
 
 export function ToggleFilter(props: ToggleFilterProps) {
-  const { label, isChecked = false, onChange } = props;
+    const { label, isChecked = false, onChange } = props;
 
   return (
     <div>
-      <label>
-        <input
-          type="checkbox"
-          checked={isChecked}
-          onChange={() => onChange?.(!isChecked)}
-        />
+          <label>
+              < input type="checkbox" checked={isChecked} onClick = {() => onChange?.(isChecked)} />
 
         {label}
       </label>

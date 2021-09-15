@@ -14,7 +14,8 @@ export function AuthRoot() {
         element={<Login action="login-callback" />}
       />
       <Route path="register" element={<Register />} />
-      <Route path="logout" element={<Logout />} />
+          <Route path="logout" element={<Logout />}
+          />
       <Route
         path="logout-callback"
         element={<Logout action="logout-callback" />}

@@ -13,6 +13,7 @@ export class AuthorizeService {
   _nextSubscriptionId = 0;
   _user: User | null = null;
     _isAuthenticated = false;
+    
 
   // By default pop ups are disabled because they don't work properly on Edge.
     // If you want to enabdotnet run -p ./RestaurantListingsdotnet run -p ./RestaurantListingsle pop up authentication simply set this flag to false.

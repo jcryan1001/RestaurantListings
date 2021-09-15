@@ -4,10 +4,15 @@ import styled from "@emotion/styled";
 import { ToggleFilter } from "./ToggleFilter";
 import { updateReturn } from "typescript";
 
+export interface RestaurantSearch {
+    search: string;
+}
+
 export interface RestaurantFiltersState {
-  tags: string[];
+    tags: string[];
   isFamilyFriendly: boolean;
-  isVeganFriendly: boolean;
+    isVeganFriendly: boolean;
+   
 }
 
 type RestaurantFiltersAction =
@@ -15,10 +20,7 @@ type RestaurantFiltersAction =
   | { type: "toggleFamilyFriendly" }
   | { type: "toggleVeganFriendly" };
 
-const restaurantFiltersReducer: Reducer<
-  RestaurantFiltersState,
-  RestaurantFiltersAction
-> = (state, action) => {
+const restaurantFiltersReducer: Reducer<RestaurantFiltersState,RestaurantFiltersAction> = (state, action) => {
   switch (action.type) {
     case "toggleTag": {
       const tagIndex = state.tags.indexOf(action.payload.tag);
@@ -59,40 +61,46 @@ const FilterTitle = styled.h4({
   color: "#2c2c2c",
 });
 
+
 export function RestaurantFilters(props: RestaurantFiltersProps) {
-  const { tags = [], onChange } = props;
+  const { tags = [], onChange} = props;
   const [state, dispatch] = useReducer(restaurantFiltersReducer, {
-    tags: [],
+      tags: [],
     isFamilyFriendly: false,
-    isVeganFriendly: false,
+      isVeganFriendly: false,
+      
+   
   });
 
   useEffect(() => {
     onChange?.(state);
   }, [state, onChange]);
+     // funtion to sort the tag list in alphabetical order//
+    
+    var r = tags.filter((value, index) => tags.indexOf(value) === index);
+    tags.length = 0;
+    tags.push(...r);
+
+   
 
   return (
     <div style={{ flex: "1 0 250px" }}>
       <FilterGroup>
               <FilterTitle>Tags</FilterTitle>
-
-              
-           
-              // funtion to sort the tag list in alphabetical order//
               {tags.sort(function (a, b) {
-                 
 
-                  var textA = a.toUpperCase();
-                  var textB = b.toUpperCase();
-                  return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
-              })
-                
+                      var textA = a.toUpperCase();
+                      var textB = b.toUpperCase();
+                      return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
 
-                  &&
+              }) &&
+                  
+                  
               tags.map((tag) => (
                   <ToggleFilter
+
                       label={tag}
-                      isChecked={!!state.tags.includes(tag)}
+                      isChecked={state.tags.includes(tag)}
                       onChange={() => dispatch({ type: "toggleTag", payload: { tag } })}
                   />
               ))}
@@ -112,7 +120,9 @@ export function RestaurantFilters(props: RestaurantFiltersProps) {
           isChecked={state.isVeganFriendly}
           onChange={() => dispatch({ type: "toggleVeganFriendly" })}
         />
-      </FilterGroup>
-    </div>
+          </FilterGroup>
+         
+      </div>
+
   );
 }

@@ -6,6 +6,7 @@ namespace RestaurantListings.Models
 {
     public class RestaurantModel
     {
+ 
         [Required]
         [MaxLength(50)]
         public string Name { get; set; }
@@ -37,5 +38,6 @@ namespace RestaurantListings.Models
             FamilyFriendly = FamilyFriendly,
             Tags = Tags,
         };
+
     }
 }

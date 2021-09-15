@@ -14,7 +14,7 @@ namespace RestaurantListings.Data.Entities
 
         public string Description { get; set; }
 
-        public decimal Rating { get; set; }
+        public decimal Rating {get; set ;}
 
         public string PhotoUri { get; set; }
 

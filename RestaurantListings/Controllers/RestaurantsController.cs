@@ -14,6 +14,7 @@ namespace RestaurantListings.Controllers
     [Route("/api/[controller]")]
     public class RestaurantsController : ControllerBase
     {
+  
         private readonly ApplicationDbContext _context;
 
         public string UserId => User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -38,7 +39,7 @@ namespace RestaurantListings.Controllers
         /// <param name="model">The restaurant <see cref="RestaurantModel">model</see>.</param>
         /// <returns>The created <see cref="Restaurant"/>.</returns>
         [HttpPost]
-        [Authorize]
+        //[Authorize]
         public async Task<IActionResult> Create([FromBody] RestaurantModel model)
         {
             var restaurant = model.ToEntity();
@@ -47,5 +48,10 @@ namespace RestaurantListings.Controllers
 
             return Ok(restaurant);
         }
+        //public static void SetProperty(this object obj, string propName, object value)
+        //{
+
+        //    obj.GetType().GetProperty(propName).SetValue(obj, value, null);
+        //}
     }
 }
