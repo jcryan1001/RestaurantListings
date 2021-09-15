@@ -49,43 +49,7 @@ export function Restaurants(this: any) {
             return nextRestaurants;
         });
     }, []);
-    //const name = ""; //[name, setname] = useState('');
-    //const description = ""; //, setdescription] = useState('');
-    //const phoneNumber = ""; //, setphonenumber] = useState('');
-    //const address = ""; //, setaddress] = useState('');
-    //const [veganFriendly, setveganfriendly] = useState('');
-    //const [familyFriendly, setfamilyfriendly] = useState('');
-
-
-    //this.state = { name: '', description: '', phoneNumber: '', address: '' };
-    //const handleChange = (event: any) => {
-
-
-    //    this.setState({ [event.target.name]: event.target.value });https://localhost:5001/api/restaurant
-    //}
-
-    //constructor() {
-    //    super();
-    //    this.state = {
-    //        user: "",
-    //        text: ""
-    //    }
-    //    this.fetchChirps = this.fetchChirps.bind(this)
-    //    this.inputHandler = this.inputHandler.bind(this)
-    //}
-
-    //const checkStatus = async (e: any) => {
-
-    //    const result = await authService.isAuthenticated();
-    //    if (result === true) {
-            
-    //    }
-    //    else {
-    //        alert("you need to sign in to be able to rate the restraunt!")
-    //    }
-        
-      
-    //}
+  
 
     
         const [name, setName] = useState('');
@@ -131,7 +95,7 @@ export function Restaurants(this: any) {
             <RestaurantFilters tags={tags} onChange={handleFiltersChange} />
             <RestaurantList restaurants={restaurants} />
 
-            <form id="form" onSubmit={handleSubmit}  >
+            <form id="form" className="container1" onSubmit={handleSubmit}  >
                 <div >
                     <label >Add a Restaurant</label>
                     <div >

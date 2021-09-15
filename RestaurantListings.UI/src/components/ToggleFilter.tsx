@@ -1,5 +1,5 @@
 import React from "react";
-
+import '../components/StyleSheet.css';
 export interface ToggleFilterProps {
   label: string;
   isChecked?: boolean;
@@ -9,13 +9,15 @@ export interface ToggleFilterProps {
 export function ToggleFilter(props: ToggleFilterProps) {
     const { label, isChecked = false, onChange } = props;
 
-  return (
-    <div>
+    return (
+        <div className ="tlist">
+         <li> 
           <label>
               < input type="checkbox" checked={isChecked} onClick = {() => onChange?.(isChecked)} />
 
         {label}
-      </label>
+                </label>
+                </li>
     </div>
   );
 }
